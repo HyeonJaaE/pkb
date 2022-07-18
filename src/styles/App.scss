@@ -17,44 +17,87 @@
     display: none;
   }
   .items {
+    display: flex;
+    align-items: end; 
     z-index: 99;
     transition: all 0.5s;
     &:hover {
       transform-origin: 50% 100%;
       transform: scale(1.2);
       filter: blur(0.5px);
-      &::after{
-        content:"";
-        position: absolute;
-        display: block;
-        top: 0px;
-        min-height: 100vh;
+      height: 100vh;
+      background-image: url("../../public/images/fire_ax9aixlu.gif");
+      background-size: cover;      
 
-      }
     }
     .item-image {
-      height: 100%;
+      
       
     }
   }
 }
 
 .header {
-  position: absolute;
-  top: 10vh;
-  left: 5vw;
-  width: 50vw;
-  height: 50vh;
+  border: 1px solid black;
+
   display: flex;
-  flex-direction: column;
+  width: 50%;
+  height: 55%;
+  position: absolute;
+  top: 10%;
+  left: 5%;
   .info {
-    height: 60vh;
-    .title {
-      font-size: 5vh;
-    }
+    border: 1px solid blue;
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    padding: 2.5%;
     .ranking {
-      font-size: 2.5vh;
+      height: 70%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .item {
+        position: relative;
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 6vh;
+        font-size: 2vh;
+        padding: 5% 0;
+        .item-image::after {
+          content: "";
+          display: block;
+          position: absolute;
+          bottom: 0px;
+          width: 11vh;
+          height: 11vh;
+          background-image: url("../../public/images/SoupyPalatableBarnowl-max-1mb.gif");
+          background-size: cover;
+        }
+        img {
+          position: absolute;
+          z-index: 99;
+          bottom: 0px;
+          width: 11vh;
+          height: 11vh;
+        }
+      }
     }
+    .help {
+      height: 30%;
+      font-size: 2.5vh;
+      button {
+        font-size: 1vh;
+        height: 2.5vh;
+        width: 4vw;
+      }
+    }
+  }
+  .character {
+    border: 1px solid red;
+    width: 50%;
   }
   ul {
     padding: 0;
