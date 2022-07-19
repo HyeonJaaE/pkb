@@ -1,39 +1,42 @@
 import { useContext } from "react";
 import { Context } from "../../App";
 
+import { Mousewheel, Autoplay, Pagination, Navigation } from "swiper";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
 export default function Main() {
-  const { account, user, iface } = useContext(Context);
+  const { account, user, iface, onClickVote } = useContext(Context);
+
+  const shuffle = (array) => array.sort(() => Math.random() - 0.5);
 
   return (
     <div className="content">
-      {user.map((s, index) => (
-        <div className="items">
-          <img className="item-image" src={`./images/${s.src}`} alt="images" />
-          <button
-            onClick={() => {
-              const data = iface.encodeFunctionData("mint", [account]);
-              console.log({ data });
-              window.ethereum
-                .request({
-                  method: "eth_sendTransaction",
-                  params: [
-                    {
-                      from: account,
-                      to: "0x31e23e18a6ab385a155c0c4c9e26a1fa3f7e2155",
-                      data,
-                    },
-                  ],
-                })
-                .then((decryptedMessage) =>
-                  console.log("The decrypted message is:", decryptedMessage)
-                )
-                .catch((error) => console.log(error.message));
-            }}
-          >
-            투표
-          </button>
-        </div>
-      ))}
+      <Swiper
+        slidesPerView={"auto"}
+        spaceBetween={50}
+        navigation={true}
+        mousewheel={true}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
+        modules={[Autoplay, Mousewheel, Navigation]}
+        className="mySwiper"
+      >
+        {shuffle(user).map((s, index) => (
+          <SwiperSlide className="items">
+            <img
+              className="item-image"
+              src={`./images/${s.src}`}
+              alt="images"
+            />
+            <button className="vote-btn" onClick={() => onClickVote()}>
+              투표
+            </button>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 }

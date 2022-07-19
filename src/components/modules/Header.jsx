@@ -8,62 +8,66 @@ export default function Header() {
   };
   return (
     <header className="header">
-      <div className="info">
-        <ul className="ranking">
-          {/* <div className="title">실시간 인기쟁이</div> */}
-          <li>
-            <div className="item">
-              <div>김휘종 50PKB </div>
-              <div className="item-image">
-                <img src={`./images/김휘종.png`} alt="images" />
-              </div>
+      <div className="title">Top 5</div>
+      <ul className="ranking">
+        {/* <div className="title">실시간 인기쟁이</div> */}
+        <li>
+          <div className="item">
+            <div>김휘종 50PKB </div>
+            <div className="item-image">
+              <img src={`./images/김휘종.png`} alt="images" />
             </div>
-          </li>
-          <li>
-            <div className="item">
-              <div>김태양 45PKB </div>
-              <div>
-                <img src={`./images/김태양.png`} alt="images" />
-              </div>
+          </div>
+        </li>
+        <li>
+          <div className="item">
+            <div>김태양 45PKB </div>
+            <div>
+              <img src={`./images/김태양.png`} alt="images" />
             </div>
-          </li>
-          <li>
-            <div className="item">
-              <div>김준호 35pkb </div>
-              <div>
-                <img src={`./images/김준호.png`} alt="images" />
-              </div>
+          </div>
+        </li>
+        <li>
+          <div className="item">
+            <div>김준호 35PKB </div>
+            <div>
+              <img src={`./images/김준호.png`} alt="images" />
             </div>
-          </li>
-          <li>
-            <div className="item">
-              <div>류기혁 5 </div>
-              <div>
-                <img src={`./images/류기혁.png`} alt="images" />
-              </div>
+          </div>
+        </li>
+        <li>
+          <div className="item">
+            <div>류기혁 5PKB </div>
+            <div>
+              <img src={`./images/류기혁.png`} alt="images" />
             </div>
-          </li>
-          <li>
-            <div className="item">
-              <div>이현재 1 </div>
-              <div>
-                <img src={`./images/이현재.png`} alt="images" />
-              </div>
+          </div>
+        </li>
+        <li>
+          <div className="item">
+            <div>이현재 1PKB </div>
+            <div>
+              <img src={`./images/이현재.png`} alt="images" />
             </div>
-          </li>
-        </ul>
-        <div className="help">
+          </div>
+        </li>
+      </ul>
+      <div className="help">
+        <div>
           <div>
             {parseAddress(account)}
             <button onClick={onClickConnect}>지갑연결</button>
           </div>
-          <div>shift + 스크롤 : 좌우 이동</div>
-          <div>ctrl + 스크롤 : 확대</div>
+        </div>
+        <div className="help-image">
+          <img
+            style={{ width: "10vh", height: "10vh" }}
+            src="./images/pinkbean.gif"
+            alt="npc"
+          />
         </div>
       </div>
-      <div className="character">
-        <img src="./images/pinkbean.gif" alt="npc" />
-      </div>
+      {/* <div className="character"></div> */}
     </header>
   );
 }

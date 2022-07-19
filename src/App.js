@@ -3,6 +3,9 @@ import { ethers } from "ethers";
 
 // styles
 import "./styles/App.scss";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 // component
 import MainTemplate from "./components/templates/MainTemplate";
@@ -30,15 +33,38 @@ function App() {
     setAccount(accounts[0]);
   };
 
+  const onClickVote = async () => {
+    // 지갑 연결 체크
+
+    // 트랜잭션 생성
+    const data = iface.encodeFunctionData("mint", [account]);
+    window.ethereum
+      .request({
+        method: "eth_sendTransaction",
+        params: [
+          {
+            from: account,
+            to: "0x31e23e18a6ab385a155c0c4c9e26a1fa3f7e2155",
+            data,
+          },
+        ],
+      })
+      .then((decryptedMessage) =>
+        console.log("The decrypted message is:", decryptedMessage)
+      )
+      .catch((error) => console.log(error.message));
+  };
+
   return (
     <Context.Provider
       value={{
         user,
-        account,
-        onClickConnect,
-        setAccount,
         iface,
+        account,
         provider,
+        setAccount,
+        onClickConnect,
+        onClickVote,
       }}
     >
       <div className="layout">
