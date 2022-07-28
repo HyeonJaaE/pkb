@@ -1,6 +1,7 @@
 import { useContext, useState, useRef, useEffect } from "react";
 import { Context } from "../../App";
-import { parseAddress } from "../../utils";
+import { parseAddress, theme, Button } from "../../utils";
+import styled from "styled-components";
 
 const padNumber = (num, length) => {
   return String(num).padStart(length, "0");
@@ -48,18 +49,18 @@ export default function VoteInfo() {
   return (
     <div className="vote">
       {account ? (
-        <>
+        <div className="glow">
           {parseAddress(account)}
           <div>남은 투표 수 {vote} 회</div>
           <div>
             투표 수 갱신까지 {hour} : {min} : {sec}
           </div>
-        </>
+        </div>
       ) : (
         <div className="help">
           <div>
             <div>
-              <button onClick={onClickConnect}>지갑연결</button>
+              <Button theme="walletBt" onClick={onClickConnect} font-family="nexon">지갑연결</Button>
             </div>
           </div>
         </div>
