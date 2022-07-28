@@ -1,13 +1,12 @@
 import { useContext } from "react";
 import { Context } from "../../App";
+import { parseAddress } from "../../utils";
 
 export default function Header() {
   const { account, onClickConnect } = useContext(Context);
-  const parseAddress = (address = "") => {
-    return `${address.slice(0, 4)}...${address.slice(39)}`;
-  };
+
   return (
-    <header className="header">
+    <div className="header">
       <div className="title">Top 5</div>
       <ul className="ranking">
         {/* <div className="title">실시간 인기쟁이</div> */}
@@ -52,22 +51,7 @@ export default function Header() {
           </div>
         </li>
       </ul>
-      <div className="help">
-        <div>
-          <div>
-            {parseAddress(account)}
-            <button onClick={onClickConnect}>지갑연결</button>
-          </div>
-        </div>
-        <div className="help-image">
-          <img
-            style={{ width: "10vh", height: "10vh" }}
-            src="./images/pinkbean.gif"
-            alt="npc"
-          />
-        </div>
-      </div>
       {/* <div className="character"></div> */}
-    </header>
+    </div>
   );
 }

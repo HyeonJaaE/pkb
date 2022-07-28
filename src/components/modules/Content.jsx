@@ -4,11 +4,10 @@ import { Context } from "../../App";
 import { Mousewheel, Autoplay, Pagination, Navigation } from "swiper";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import { shuffle } from "../../utils";
 
 export default function Main() {
   const { account, user, iface, onClickVote } = useContext(Context);
-
-  const shuffle = (array) => array.sort(() => Math.random() - 0.5);
 
   return (
     <div className="content">
@@ -31,9 +30,10 @@ export default function Main() {
               src={`./images/${s.src}`}
               alt="images"
             />
-            <button className="vote-btn" onClick={() => onClickVote()}>
+            <button className="vote-btn" onClick={() => onClickVote(s.address)}>
               투표
             </button>
+            <h1>득표수 {s.balance}</h1>
           </SwiperSlide>
         ))}
       </Swiper>

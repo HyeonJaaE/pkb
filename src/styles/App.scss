@@ -47,12 +47,15 @@
     }
   }
 }
+
 .vote {
-  float: right;
+  position: absolute;
+  top: 10%;
+  right: 25%;
   font-family: "nexon";
   font-size: 40px;
-
 }
+
 .header {
   font-family: "nexon";
   display: flex;
@@ -64,7 +67,7 @@
   height: 60%; */
   position: absolute;
   top: 5%;
-  left: 5%;
+  left: 25%;
   /* width: 100%; */
   /* padding: 2.5%; */
   .title {
