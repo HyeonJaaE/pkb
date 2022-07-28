@@ -22,6 +22,7 @@ function App() {
   const instance = new ethers.Contract(PKB_CA, PKB_ABI, provider);
   const iface = instance.interface;
 
+  let criteriaTime = new Date();
   const [user, setUser] = useState(USER_DATA);
   const [account, setAccount] = useState();
 
@@ -63,6 +64,7 @@ function App() {
         account,
         provider,
         setAccount,
+        criteriaTime,
         onClickConnect,
         onClickVote,
       }}
