@@ -28,23 +28,19 @@ function App() {
   const [vote, setVote] = useState();
   const [user, setUser] = useState(USER_DATA);
   const [account, setAccount] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     window.ethereum.on(
       "accountsChanged",
       async () => await accountChangeHandler()
     );
+    getBalances();
   }, []);
 
-  const accountChangeHandler = async () => {
-    console.log("hi");
-    provider.off("block");
-    const accounts = await window.ethereum.request({
-      method: "eth_requestAccounts",
-    });
-    setAccount(accounts[0]);
-
+  const getBalances = () => {
     provider.on("block", async () => {
+      setIsLoading(true);
       const newUser = [];
       for (let i = 0; i < user.length; i++) {
         const data = iface.encodeFunctionData("balanceOf(address)", [
@@ -58,21 +54,35 @@ function App() {
         );
         newUser[i] = {
           ...user[i],
-          balance: formatEther(
-            abiCoder.decode(["uint256"], callData).toString()
+          balance: Number(
+            formatEther(abiCoder.decode(["uint256"], callData).toString())
           ),
         };
       }
       setUser(newUser);
+      setIsLoading(false);
     });
+  };
 
+  const getVote = (account) => {
     provider.on("block", async () => {
-      const data = iface.encodeFunctionData("getVote(address)", [accounts[0]]);
+      const data = iface.encodeFunctionData("getVote(address)", [account]);
       const tx = { to: PKB_CA, data };
 
       const callData = await provider.call(tx);
       setVote(abiCoder.decode(["uint8"], callData));
     });
+  };
+
+  const accountChangeHandler = async () => {
+    console.log("hi");
+    provider.off("block");
+    const accounts = await window.ethereum.request({
+      method: "eth_requestAccounts",
+    });
+    setAccount(accounts[0]);
+    getBalances();
+    getVote(accounts[0]);
   };
 
   const onClickConnect = async () => {
@@ -108,6 +118,7 @@ function App() {
         user,
         iface,
         account,
+        isLoading,
         provider,
         setAccount,
         criteriaTime,
