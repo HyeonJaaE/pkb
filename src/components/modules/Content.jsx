@@ -17,13 +17,13 @@ export default function Main() {
         navigation={true}
         mousewheel={true}
         autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
+          delay: 3000,
+          disableOnInteraction: true,
         }}
         modules={[Autoplay, Mousewheel, Navigation]}
         className="mySwiper"
       >
-        {shuffle(user).map((s, index) => (
+        {user.map((s, index) => (
           <SwiperSlide className="items">
             <img
               className="item-image"
