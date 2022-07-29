@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/pkb/static/css/main.ce611a02.css",
+    "main.js": "/pkb/static/js/main.da829713.js",
+    "static/media/NEXON Lv2 Gothic OTF.woff": "/pkb/static/media/NEXON Lv2 Gothic OTF.54a9bf600b9ba0074cb0.woff",
+    "static/media/bg2.png": "/pkb/static/media/bg2.1eb8a704c1a9423e1fa1.png",
+    "static/media/SoupyPalatableBarnowl-max-1mb.gif": "/pkb/static/media/SoupyPalatableBarnowl-max-1mb.e4d91cfe0046615452ae.gif",
+    "index.html": "/pkb/index.html",
+    "main.ce611a02.css.map": "/pkb/static/css/main.ce611a02.css.map",
+    "main.da829713.js.map": "/pkb/static/js/main.da829713.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ce611a02.css",
+    "static/js/main.da829713.js"
+  ]
+}
